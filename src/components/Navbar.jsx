@@ -9,8 +9,7 @@ const Navbar = () => {
           <NavLink to="/" className="text-gray-700 hover:text-blue-600">Home</NavLink>
           <NavLink to="/how-it-works" className="text-gray-700 hover:text-blue-600">How It Works</NavLink>
           <NavLink to="/doctors" className="text-gray-700 hover:text-blue-600">Doctors</NavLink>
-          <NavLink to="/testimonials" className="text-gray-700 hover:text-blue-600">Testimonials</NavLink>
-          <NavLink to="/faq" className="text-gray-700 hover:text-blue-600">FAQ</NavLink>
+          <NavLink to="/navservices" className="text-gray-700 hover:text-blue-600">Services</NavLink>
         </div>
         <button className="md:hidden text-gray-700">
           {/* Hamburger icon */}

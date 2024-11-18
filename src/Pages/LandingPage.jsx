@@ -1,8 +1,8 @@
 import HeroSection from "../components/HeroSection";
 import Services from "../components/Services";
 import Testimonials from "../components/Testimonials";
-import HowItWorks from "../components/HowItWorks";
-import Doctors from "../components/ListDoctors";
+import HowItWorks from "./HowItWorks";
+import Doctors from "./ListDoctors";
 import FAQ from "../components/FAQ";
 
 

@@ -1,5 +1,5 @@
-import ViewAllDoctors from "./ViewAllDoctors";
-import Doctor from "./Doctor";
+import ViewAllDoctors from "../components/ViewAllDoctors";
+import Doctor from "../components/Doctor";
 
 const ListDoctors = () => {
   const doctors = [
