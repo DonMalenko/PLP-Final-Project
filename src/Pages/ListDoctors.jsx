@@ -1,4 +1,3 @@
-import ViewAllDoctors from "../components/ViewAllDoctors";
 import Doctor from "../components/Doctor";
 
 const ListDoctors = () => {
@@ -17,7 +16,6 @@ const ListDoctors = () => {
           <Doctor key={index} doctor={doctor} />          
         ))}
           </div>
-          <ViewAllDoctors/>
     </section>
   );
 };

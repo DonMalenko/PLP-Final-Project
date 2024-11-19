@@ -4,6 +4,7 @@ import Testimonials from "../components/Testimonials";
 import HowItWorks from "./HowItWorks";
 import Doctors from "./ListDoctors";
 import FAQ from "../components/FAQ";
+import ViewAllDoctors from '../components/ViewAllDoctors';
 
 
 const LandingPage = () => {
@@ -14,6 +15,7 @@ const LandingPage = () => {
           <Testimonials />
           <HowItWorks />
           <Doctors />
+          <ViewAllDoctors/>
           <FAQ />
       </>
   )

@@ -11,13 +11,13 @@ const Footer = () => {
         </p>
         <ul className="flex space-x-4 mt-4 md:mt-0">
           <li><Link to="/about" className="hover:underline">About Us</Link></li>
-          <li><Link to="/services" className="hover:underline">Services</Link></li>
+          <li><Link to="/servicePage" className="hover:underline">Services</Link></li>
           <li><Link to="/contact" className="hover:underline">Contact</Link></li>
         </ul>
         <div className="flex space-x-3 mt-4 md:mt-0">
-          <Link to="#!" className="hover:text-blue-500">Facebook</Link>
-          <Link to="#!" className="hover:text-blue-400">Twitter</Link>
-          <Link to="#!" className="hover:text-blue-600">LinkedIn</Link>
+          <Link to="https://www.facebook.com/abdulwasiuabubakr94" className="hover:text-blue-500">Facebook</Link>
+          <Link to="https://x.com/Donmalenko09?t=qRY5U0Lqm5Pbcp-vsd42XA&s=09" className="hover:text-blue-400">Twitter</Link>
+          <Link to="https://www.linkedin.com/in/abdulwasiu-abubakar-419511238" className="hover:text-blue-600">LinkedIn</Link>
         </div>
       </div>
     </footer>

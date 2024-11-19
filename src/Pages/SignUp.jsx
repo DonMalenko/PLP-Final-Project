@@ -92,9 +92,9 @@ const Signup = () => {
             />
             <label htmlFor="terms" className="text-sm text-gray-700">
               I agree to the{' '}
-              <a href="/terms" className="text-blue-500 hover:underline">
+              <Link to="/terms" className="text-blue-500 hover:underline">
                 Terms and Conditions
-              </a>
+              </Link>
             </label>
           </div>
 

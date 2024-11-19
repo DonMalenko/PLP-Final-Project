@@ -54,12 +54,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Layout from './Layouts/Layout';
+import DashboardLayout from './Layouts/DashboardLayout';
 import LandingPage from './Pages/LandingPage';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
-import NavServices from './Pages/NavServices';
-import Signup from './components/SignUp';
-import Login from './components/Login';
+import ServicePage from './Pages/ServicePage';
+import Signup from './Pages/SignUp';
+import Login from './Pages/Login';
 import Dashboard from './components/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
 import AppointmentBooking from './components/AppointmentBooking';
@@ -67,6 +68,7 @@ import ProfileManagement from './components/ProfileManagement';
 import VideoConsultation from './components/VideoConsultation';
 import HowItWorks from './Pages/HowItWorks';
 import ListDoctors from './Pages/ListDoctors';
+import TermsAndConditions from './Pages/TermsAndConditions';
 
 
 const App = () => (
@@ -79,13 +81,14 @@ const App = () => (
         <Route path="/contact" element={<Contact />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/doctors" element={<ListDoctors/>} />
-        
-        <Route path="/navservices" element={<NavServices />} />
+        <Route path="/servicePage" element={<ServicePage />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
 
         {/* Authentication Routes */}
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-
+      </Route>
+      <Route element={<DashboardLayout />}>
         {/* Protected Routes */}
         <Route path="/dashboard" element={
           <PrivateRoute>
@@ -96,8 +99,13 @@ const App = () => (
           <Route path="appointments" element={<AppointmentBooking />} />
           <Route path="profile" element={<ProfileManagement />} />
           <Route path="consultation" element={<VideoConsultation />} />
+          <Route path="doctors" element={<ListDoctors />} />
+           {/* <Route path="consultation" element={<VideoConsultation />} /> */}
         </Route>
       </Route>
+
+        
+      
     </Routes>
   </Router>
 );

@@ -3,10 +3,12 @@ import React, { useState, useEffect } from 'react';
 import LogOut from './LogOut';
 import Loader from './Loader';
 import { Link, Outlet } from 'react-router-dom'; // To render nested routes like appointments, profile, etc.
+import Lottie from 'lottie-react'
+import telemedicineAnimation from '../assets/animations/telemedicine.json';
 
 
 const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState('appointments'); // Keeps track of the active tab (Appointments, Profile, etc.)
+  const [activeTab, setActiveTab] = useState('null')
    const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -30,11 +32,14 @@ const Dashboard = () => {
           <li className={`cursor-pointer py-2 ${activeTab === 'appointments' ? 'bg-blue-600' : ''}`} onClick={() => setActiveTab('appointments')}>
             <Link to="/dashboard/appointments">Appointments</Link>
           </li>
-          <li className={`cursor-pointer py-2 ${activeTab === 'profile' ? 'bg-blue-600' : ''}`} onClick={() => setActiveTab('profile')}>
-            <Link to="/dashboard/profile">Profile</Link>
+          <li className={`cursor-pointer py-2 ${activeTab === 'doctors' ? 'bg-blue-600' : ''}`} onClick={() => setActiveTab('doctors')}>
+            <Link to="/dashboard/doctors">Doctors</Link>
           </li>
           <li className={`cursor-pointer py-2 ${activeTab === 'consultation' ? 'bg-blue-600' : ''}`} onClick={() => setActiveTab('consultation')}>
             <Link to="/dashboard/consultation">Video Consultation</Link>
+          </li>
+          <li className={`cursor-pointer py-2 ${activeTab === 'offline' ? 'bg-blue-600' : ''}`} onClick={() => setActiveTab('offline')}>
+            <Link to="/dashboard/offline">Drop a Message</Link>
           </li>
         </ul>
       </div>
@@ -42,12 +47,14 @@ const Dashboard = () => {
       {/* Main Content */}
       <div className="flex-1 p-6">
         <h2 className="text-2xl font-semibold mb-4">Welcome to your Dashboard</h2>
-        <LogOut/>
+        <LogOut activeTab={activeTab } />
 
         {/* Render child components based on the selected tab */}
         <Outlet />
-                {/* Loader */}
-      <Loader loading={loading} /> {/* Show loader while loading is true */}
+        {activeTab === 'null' ? <Lottie animationData={telemedicineAnimation} className="w-full h-auto" /> : ""}
+        <Loader loading={loading} />
+        
+        
       </div>
     </div>
   );

@@ -1,15 +1,20 @@
 import Logo from '../assets/images/Telemedicine_logo.png';
 import { NavLink } from 'react-router-dom';
+
 const Navbar = () => {
+
+const activeLink = ({ isActive }) =>
+    isActive ? "text-white bg-blue-600 hover:text-black px-2" : "text-white-500 hover:text-blue-600"
+
   return (
     <nav className="bg-white shadow-md">
     <div className="container mx-auto px-1 py-4 flex justify-between items-center">
         <NavLink to="/" className="text-2xl font-bold text-blue-600"> <img className='inline h-6 w-8' src={Logo} alt="telemedicine-logo" /> Telemedicine</NavLink>
         <div className="hidden md:flex space-x-6">
-          <NavLink to="/" className="text-gray-700 hover:text-blue-600">Home</NavLink>
-          <NavLink to="/how-it-works" className="text-gray-700 hover:text-blue-600">How It Works</NavLink>
-          <NavLink to="/doctors" className="text-gray-700 hover:text-blue-600">Doctors</NavLink>
-          <NavLink to="/navservices" className="text-gray-700 hover:text-blue-600">Services</NavLink>
+          <NavLink to="/" className={activeLink}>Home</NavLink>
+          <NavLink to="/how-it-works" className={activeLink}>How It Works</NavLink>
+          <NavLink to="/doctors" className={activeLink}>Doctors</NavLink>
+          <NavLink to="/servicePage" className={activeLink}>Services</NavLink>
         </div>
         <button className="md:hidden text-gray-700">
           {/* Hamburger icon */}
