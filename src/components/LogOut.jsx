@@ -17,18 +17,14 @@ const LogOut = () => {
   };
 
   return (
-    <nav className="bg-blue-500 p-4 text-white flex justify-between items-center">
-      <Link to="/" className="text-xl font-bold">Telemedicine App</Link>
-      <div>
-        <Link to="/dashboard" className="mr-4">Dashboard</Link>
+    
         <button
           onClick={handleLogout}
-          className="bg-red-500 px-4 py-2 rounded-md hover:bg-red-600"
+          className="bg-red-500 px-2 py-2 rounded-md hover:bg-red-600"
         >
           Log Out
         </button>
-      </div>
-    </nav>
+     
   );
 };
 

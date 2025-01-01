@@ -1,10 +1,13 @@
 // src/components/Login.jsx
 import React, { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { ThemeMode } from '../Recoil/State';
 import { auth } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = () => {
+  const themeMode = useRecoilValue(ThemeMode);
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,9 +24,9 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white shadow-lg rounded-lg">
-        <h2 className="text-2xl font-bold text-center text-blue-600">Log In</h2>
+    <div className={`flex justify-center items-center min-h-screen ${themeMode === 'dark' ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-600'}`}>
+      <div className={`${themeMode === 'dark' ? 'bg-gray-700 text-gray-100' : 'bg-white text-gray-600'}w-full max-w-md p-8 space-y-6 shadow-lg rounded-lg`}>
+        <h2 className={`text-2xl font-bold text-center ${themeMode === 'dark' ? 'text-gray-100' : 'text-blue-600'}`}>Log In</h2>
         <form onSubmit={handleLogin} className="space-y-4">
           <input
             type="email"

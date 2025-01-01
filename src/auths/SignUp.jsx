@@ -2,10 +2,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { ThemeMode } from '../Recoil/State';
 import { auth } from '../../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 const Signup = () => {
+  const themeMode = useRecoilValue(ThemeMode);
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -37,8 +40,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <div className={`flex justify-center items-center min-h-screen ${themeMode === 'dark' ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-600'}`}>
+      <div className={`${themeMode === 'dark' ? 'bg-gray-700 text-gray-100' : 'bg-white text-gray-600'} p-8 rounded-lg shadow-lg w-full max-w-md`}>
         <h2 className="text-2xl font-semibold text-center mb-6">Sign Up</h2>
         
         {error && <div className="text-red-500 text-center mb-4">{error}</div>}
@@ -46,10 +49,10 @@ const Signup = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email Input */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <label className={`block text-sm font-medium ${themeMode === 'dark' ? 'text-gray-100' : 'text-gray-700'}`}>Email</label>
             <input
               type="email"
-              className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -58,10 +61,10 @@ const Signup = () => {
 
           {/* Password Input */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Password</label>
+            <label className={`block text-sm font-medium ${themeMode === 'dark' ? 'text-gray-100' : 'text-gray-700'}`}>Password</label>
             <input
               type="password"
-              className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -70,10 +73,10 @@ const Signup = () => {
 
           {/* Confirm Password Input */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Confirm Password</label>
+            <label className={`block text-sm font-medium ${themeMode === 'dark' ? 'text-gray-100' : 'text-gray-700'}`}>Confirm Password</label>
             <input
               type="password"
-              className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
@@ -90,7 +93,7 @@ const Signup = () => {
               onChange={() => setTermsAccepted(!termsAccepted)}
               required
             />
-            <label htmlFor="terms" className="text-sm text-gray-700">
+            <label htmlFor="terms" className={`text-sm ${themeMode === 'dark' ? 'text-gray-100' : 'text-gray-700'}`}>
               I agree to the{' '}
               <Link to="/terms" className="text-blue-500 hover:underline">
                 Terms and Conditions
@@ -110,7 +113,7 @@ const Signup = () => {
         </form>
 
         <div className="text-center mt-4">
-          <p className="text-sm text-gray-600">
+          <p className={`text-sm ${themeMode === 'dark' ? 'text-gray-100' : 'text-gray-700'}`}>
             Already have an account?{' '}
             <Link to="/login" className="text-blue-500 hover:underline">
               Log in

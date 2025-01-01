@@ -1,36 +1,29 @@
-// src/components/Dashboard.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import LogOut from './LogOut';
-import Loader from './Loader';
-import { Link, Outlet } from 'react-router-dom'; // To render nested routes like appointments, profile, etc.
-import Lottie from 'lottie-react'
-import telemedicineAnimation from '../assets/animations/telemedicine.json';
-
+import { Link, Outlet, useLocation } from 'react-router-dom';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { ActiveTab, DashboardState, ThemeMode } from '../Recoil/State';
 
 const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState('null')
-   const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useRecoilState(ActiveTab);
+  const { appointments, visitHistory, prescriptions } = useRecoilValue(DashboardState);
+  const themeMode = useRecoilValue(ThemeMode );
 
   useEffect(() => {
-    // Simulating a fetch request for dashboard data
-    const fetchData = async () => {
-      // Simulate a loading time (e.g., fetching data from an API)
-      setTimeout(() => {
-        setLoading(false); // Set loading to false after data is fetched
-      }, 2000);
-    };
-
-    fetchData();
-  }, []);
+    // Set active tab based on the URL path
+    const currentPath = location.pathname.split('/').pop();
+    setActiveTab(currentPath || 'dashboard');
+  }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className={`flex flex-wrap min-h-screen ${themeMode === 'dark' ? 'bg-gray-900' : "bg-gray-100"}`}>
       {/* Sidebar */}
-      <div className="w-1/4 bg-blue-500 p-4 text-white">
-        <h2 className="text-xl font-bold">Dashboard</h2>
+<div className={`w-full md:w-1/4 sticky lg:sticky inset-y-0 left-0 z-10 ${themeMode === 'dark' ? 'bg-blue-900' : 'bg-blue-500' } text-white p-4 md:h-screen`}>
+        <h2 className="text-xl font-bold"><Link to="/dashboard">Dashboard</Link></h2>
         <ul className="mt-4">
           <li className={`cursor-pointer py-2 ${activeTab === 'appointments' ? 'bg-blue-600' : ''}`} onClick={() => setActiveTab('appointments')}>
-            <Link to="/dashboard/appointments">Appointments</Link>
+            <Link to="/dashboard/appointments">Book Appointment</Link>
           </li>
           <li className={`cursor-pointer py-2 ${activeTab === 'doctors' ? 'bg-blue-600' : ''}`} onClick={() => setActiveTab('doctors')}>
             <Link to="/dashboard/doctors">Doctors</Link>
@@ -46,15 +39,62 @@ const Dashboard = () => {
 
       {/* Main Content */}
       <div className="flex-1 p-6">
-        <h2 className="text-2xl font-semibold mb-4">Welcome to your Dashboard</h2>
-        <LogOut activeTab={activeTab } />
+      <div className={`${themeMode === 'dark' ? 'bg-gray-600 text-gray-50' : 'bg-white text-gray-700'} flex justify-between mx-auto p-4 shadow-lg border-spacing-x-10 mb-10`}>
+          <h2 className="text-2xl font-semibold mb-4">Welcome to your Dashboard</h2>
+          <LogOut activeTab={activeTab} />
+        </div>
+        {activeTab === 'dashboard' ? (
+          <div>
+            <div className={`${themeMode === 'dark' ? 'bg-gray-600 text-gray-50' : 'bg-white text-gray-700'} p-3 mb-6`}>
+            <h2 className=" text-xl font-semibold mb-2">Current Appointments</h2>
+            {appointments.length ? (
+              <ul>
+                {appointments.map((appointment, index) => (
+                  <li key={index} className="border-b py-2">
+                    {appointment.doctorName} - {appointment.date}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No appointments scheduled.</p>
+            )}
+          </div>
 
-        {/* Render child components based on the selected tab */}
-        <Outlet />
-        {activeTab === 'null' ? <Lottie animationData={telemedicineAnimation} className="w-full h-auto" /> : ""}
-        <Loader loading={loading} />
-        
-        
+          {/* Visit History */}
+          <div className={`${themeMode === 'dark' ? 'bg-gray-600 text-gray-50' : 'bg-white text-gray-700'} p-3 mb-6`}>
+            <h2 className="text-xl font-semibold mb-2">Visit History</h2>
+            {visitHistory.length ? (
+              <ul>
+                {visitHistory.map((visit, index) => (
+                  <li key={index} className="border-b py-2">
+                    {visit.date} - {visit.notes}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No visit history available.</p>
+            )}
+          </div>
+
+          {/* Prescriptions */}
+          <div className={`${themeMode === 'dark' ? 'bg-gray-600 text-gray-50' : 'bg-white text-gray-700'} p-3 mb-6`}>
+            <h2 className="text-xl font-semibold mb-2">Prescriptions</h2>
+            {prescriptions.length ? (
+              <ul>
+                {prescriptions.map((prescription, index) => (
+                  <li key={index} className="border-b py-2">
+                    {prescription.medicineName} - {prescription.dosage}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No prescriptions available.</p>
+            )}
+          </div>
+        </div>
+        ) : (
+          <Outlet />
+        )}
       </div>
     </div>
   );
