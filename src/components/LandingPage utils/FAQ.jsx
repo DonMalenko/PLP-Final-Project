@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRecoilValue } from 'recoil';
-import {ThemeMode } from '../Recoil/State';
+import {ThemeMode } from '../../Recoil/State';
 
 
 const FAQ = () => {
@@ -29,7 +29,7 @@ const themeMode = useRecoilValue(ThemeMode);
   };
 
   return (
-    <section className={`py-10 ${themeMode === 'dark' ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-600'}`}>
+    <section className={`py-10 ${themeMode === 'dark' ? 'bg-gray-900 text-gray-100' : 'bg-gray-200 text-gray-600'}`}>
       <h2 className="text-3xl font-bold text-center mb-6">Frequently Asked Questions</h2>
       <div className="container mx-auto space-y-4">
         {questions.map((faq, index) => (

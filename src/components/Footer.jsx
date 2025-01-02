@@ -11,7 +11,6 @@ const Footer = () => {
         </p>
         <ul className="flex space-x-4 mt-4 md:mt-0">
           <li><Link to="/about" className="hover:underline">About Us</Link></li>
-          <li><Link to="/servicePage" className="hover:underline">Services</Link></li>
           <li><Link to="/contact" className="hover:underline">Contact</Link></li>
         </ul>
         <div className="flex space-x-3 mt-4 md:mt-0">

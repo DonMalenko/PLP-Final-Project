@@ -4,17 +4,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Layout from './Layouts/Layout';
 import LandingPage from './Pages/LandingPage';
 import About from './Pages/About';
-import Contact from './Pages/Contact';
-import ServicePage from './Pages/ServicePage';
 import Signup from './auths/SignUp';
 import Login from './auths/Login';
 import Dashboard from './components/Dashboard';
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/Routes/PrivateRoute';
 import AppointmentBooking from './components/AppointmentBooking';
 import ProfileManagement from './components/ProfileManagement';
 import VideoConsultation from './components/VideoConsultation';
-import HowItWorks from './Pages/HowItWorks';
-import ListDoctors from './Pages/ListDoctors';
+import ListDoctors from './components/LandingPage utils/ListDoctors';
+import Contact from './Pages/Contact';
 import TermsAndConditions from './Pages/TermsAndConditions';
 
 
@@ -27,9 +25,6 @@ const App = () => (
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/how-it-works" element={<HowItWorks />} />
-        <Route path="/doctors" element={<ListDoctors/>} />
-        <Route path="/servicePage" element={<ServicePage />} />
         <Route path="/terms" element={<TermsAndConditions />} />
 
         {/* Authentication Routes */}

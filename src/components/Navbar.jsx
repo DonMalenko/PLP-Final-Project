@@ -56,14 +56,11 @@ const Navbar = () => {
               <NavLink to="/" className={activeLink}>
                 Home
               </NavLink>
-              <NavLink to="/how-it-works" className={activeLink}>
-                How It Works
+              <NavLink to="/about" className={activeLink}>
+                About Us
               </NavLink>
-              <NavLink to="/doctors" className={activeLink}>
-                Doctors
-              </NavLink>
-              <NavLink to="/servicePage" className={activeLink}>
-                Services
+              <NavLink to="/contact" className={activeLink}>
+                Contact Us
               </NavLink>
             </div>
           )}

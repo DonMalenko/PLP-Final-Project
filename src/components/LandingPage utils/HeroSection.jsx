@@ -1,6 +1,6 @@
 import Lottie from 'lottie-react'
-import telemedicineAnimation from '../assets/animations/telemedicine.json';
-import GetStart from './GetStart';
+import telemedicineAnimation from '../../assets/animations/telemedicine.json';
+import GetStart from '../GetStart';
 
 const HeroSection = () => {
   return (

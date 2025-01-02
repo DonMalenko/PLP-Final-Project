@@ -1,5 +1,5 @@
 import { useRecoilValue } from 'recoil';
-import {ThemeMode } from '../Recoil/State';
+import {ThemeMode } from '../../Recoil/State';
 
 const Doctor = ({ doctor} ) => {
 
