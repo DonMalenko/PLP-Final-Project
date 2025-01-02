@@ -1,6 +1,6 @@
-import Doctor from "./LandingPage utils/Doctor";
 import { useRecoilValue } from 'recoil';
-import { ThemeMode } from '../Recoil/State';
+import { ThemeMode } from '../../Recoil/State';
+import Doctor from '../LandingPage utils/Doctor';
 
 const ListDoctors = () => {
   const themeMode = useRecoilValue(ThemeMode);
