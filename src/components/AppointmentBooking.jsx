@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import {  ThemeMode } from '../Recoil/State';
-import Loader from './Loader';
+import Loader from './Spinner';
 
 const AppointmentBooking = () => {
     const [loading, setLoading] = useState(false);

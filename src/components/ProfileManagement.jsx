@@ -1,6 +1,6 @@
 // src/components/ProfileManagement.jsx
 import React, { useState } from 'react';
-import Loader from './Loader'; // Import the Loader component
+import Loader from './Spinner'; // Import the Loader component
 
 const ProfileManagement = () => {
   const [profile, setProfile] = useState({

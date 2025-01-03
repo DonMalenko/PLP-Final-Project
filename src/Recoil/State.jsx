@@ -12,11 +12,6 @@ export const ActiveTab = atom({
   default: null, // Default value 
 });
 
-// Spinner Loader
-export const Loading = atom({
-    key: 'loadingState', // Unique ID
-    default: true, // Default value 
-  });
 
   // Patient Dashboard
   export const DashboardState = atom({
